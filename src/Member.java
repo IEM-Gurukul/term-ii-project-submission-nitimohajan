@@ -1,23 +1,22 @@
 import java.util.ArrayList;
 
-public class Member {
+public class Member extends User {
     int memberId;
-    String name;
     ArrayList<Book> borrowedBooks;
 
     public Member(int memberId, String name) {
+        super(name);
         this.memberId = memberId;
-        this.name = name;
         this.borrowedBooks = new ArrayList<>();
     }
 
     public void borrowBook(Book book) {
-        if (book.isAvailable) {
+        if (book.isAvailable()) {
             borrowedBooks.add(book);
             book.borrowBook();
-            System.out.println(name + " borrowed: " + book.title);
+            System.out.println(name + " borrowed: " + book.getTitle());
         } else {
-            System.out.println("Sorry, " + book.title + " is not available.");
+            System.out.println("Sorry, " + book.getTitle() + " is not available.");
         }
     }
 
@@ -25,9 +24,9 @@ public class Member {
         if (borrowedBooks.contains(book)) {
             borrowedBooks.remove(book);
             book.returnBook();
-            System.out.println(name + " returned: " + book.title);
+            System.out.println(name + " returned: " + book.getTitle());
         } else {
-            System.out.println(name + " did not borrow: " + book.title);
+            System.out.println(name + " did not borrow: " + book.getTitle());
         }
     }
 
@@ -39,7 +38,7 @@ public class Member {
         }
 
         for (Book b : borrowedBooks) {
-            System.out.println(b.title);
+            System.out.println(b.getTitle());
         }
     }
 }
