@@ -1,37 +1,41 @@
 import java.util.ArrayList;
 
 public class Library {
-    ArrayList<Book> books = new ArrayList<>();
-    ArrayList<Member> members = new ArrayList<>();
+    ArrayList<Book> books;
+
+    public Library() {
+        books = new ArrayList<>();
+    }
 
     public void addBook(Book book) {
         books.add(book);
     }
 
-    public void addMember(Member member) {
-        members.add(member);
-    }
-
-    public void showBooks() {
-        System.out.println("Books in Library:");
+    public void showAllBooks() {
+        System.out.println("All Books:");
         for (Book b : books) {
             System.out.println(b.title + " by " + b.author);
         }
     }
 
-    // NEW FEATURE (Commit 7)
-    public void searchBook(String title) {
+    public void showAvailableBooks() {
+        System.out.println("Available Books:");
+
         boolean found = false;
 
         for (Book b : books) {
-            if (b.title.equalsIgnoreCase(title)) {
-                System.out.println("Found: " + b.title + " by " + b.author);
+            if (b.isAvailable) {
+                System.out.println(b.title + " by " + b.author);
                 found = true;
             }
         }
 
         if (!found) {
-            System.out.println("Book not found: " + title);
+            System.out.println("No books available right now.");
         }
+    }
+
+    public void showTotalBooks() {
+        System.out.println("Total books in library: " + books.size());
     }
 }
