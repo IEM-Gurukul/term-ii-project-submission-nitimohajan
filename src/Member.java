@@ -22,13 +22,22 @@ public class Member {
     }
 
     public void returnBook(Book book) {
-        borrowedBooks.remove(book);
-        book.returnBook();
-        System.out.println(name + " returned: " + book.title);
+        if (borrowedBooks.contains(book)) {
+            borrowedBooks.remove(book);
+            book.returnBook();
+            System.out.println(name + " returned: " + book.title);
+        } else {
+            System.out.println(name + " did not borrow: " + book.title);
+        }
     }
 
     public void showBorrowedBooks() {
         System.out.println("Borrowed Books:");
+        if (borrowedBooks.isEmpty()) {
+            System.out.println("No books borrowed.");
+            return;
+        }
+
         for (Book b : borrowedBooks) {
             System.out.println(b.title);
         }
