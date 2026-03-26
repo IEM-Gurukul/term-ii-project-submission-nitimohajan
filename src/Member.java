@@ -14,7 +14,7 @@ public class Member extends User {
         if (book.isAvailable()) {
             borrowedBooks.add(book);
             book.borrowBook();
-            System.out.println(name + " borrowed: " + book.getTitle());
+            System.out.println("Book borrowed successfully: " + book.getTitle());
         } else {
             System.out.println("Sorry, " + book.getTitle() + " is not available.");
         }
@@ -24,9 +24,9 @@ public class Member extends User {
         if (borrowedBooks.contains(book)) {
             borrowedBooks.remove(book);
             book.returnBook();
-            System.out.println(name + " returned: " + book.getTitle());
+            System.out.println("Book returned: " + book.getTitle());
         } else {
-            System.out.println(name + " did not borrow: " + book.getTitle());
+            System.out.println("You did not borrow: " + book.getTitle());
         }
     }
 
@@ -38,7 +38,7 @@ public class Member extends User {
         }
 
         for (Book b : borrowedBooks) {
-            System.out.println(b.getTitle());
+            System.out.println("- " + b.getTitle());
         }
     }
 }
