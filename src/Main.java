@@ -1,9 +1,12 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("=================================");
         System.out.println("   LIBRARY MANAGEMENT SYSTEM");
-        System.out.println("=================================\n");
+        System.out.println("\n");
+
+        Scanner sc = new Scanner(System.in);
 
         Library library = new Library();
 
@@ -20,8 +23,22 @@ public class Main {
         library.showAllBooks();
         System.out.println();
 
-        m1.borrowBook(b1);
-        m1.borrowBook(b2);
+        System.out.print("Enter book title to borrow: ");
+        String title = sc.nextLine();
+
+        boolean found = false;
+
+        for (Book b : library.books) {
+            if (b.getTitle().equalsIgnoreCase(title)) {
+                m1.borrowBook(b);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Book not found!");
+        }
 
         System.out.println();
 

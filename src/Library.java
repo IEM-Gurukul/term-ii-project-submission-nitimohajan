@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Library {
-    ArrayList<Book> books;
+    public ArrayList<Book> books;
 
     public Library() {
         books = new ArrayList<>();
@@ -14,7 +14,7 @@ public class Library {
     public void showAllBooks() {
         System.out.println("All Books:");
         for (Book b : books) {
-            System.out.println(b.getTitle() + " by " + b.getAuthor());
+            System.out.println("- " + b.getTitle() + " by " + b.getAuthor());
         }
     }
 
@@ -24,7 +24,7 @@ public class Library {
 
         for (Book b : books) {
             if (b.isAvailable()) {
-                System.out.println(b.getTitle() + " by " + b.getAuthor());
+                System.out.println("- " + b.getTitle() + " by " + b.getAuthor());
                 found = true;
             }
         }
