@@ -4,29 +4,38 @@ public class Book {
     private String author;
     private boolean isAvailable = true;
 
-    public Book(int id, String title, String author) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-    }
+    public Book(int id, String title, String author) {  
+        this.id = id;  
+        this.title = title;  
+        this.author = author;  
+    }  
 
-    public String getTitle() {
-        return title;
-    }
+    public int getId() {  
+        return id;  
+    }  
 
-    public String getAuthor() {
-        return author;
-    }
+    public String getTitle() {  
+        return title;  
+    }  
 
-    public boolean isAvailable() {
-        return isAvailable;
-    }
+    public String getAuthor() {  
+        return author;  
+    }  
 
-    public void borrowBook() {
-        isAvailable = false;
-    }
+    public boolean isAvailable() {  
+        return isAvailable;  
+    }  
 
-    public void returnBook() {
-        isAvailable = true;
+    public void borrowBook() {  
+        isAvailable = false;  
+    }  
+
+    public void returnBook() {  
+        isAvailable = true;  
+    }  
+
+    @Override
+    public String toString() {
+        return title + " by " + author + " (" + (isAvailable ? "Available" : "Not Available") + ")";
     }
 }
